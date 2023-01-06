@@ -4,6 +4,8 @@ declare(strict_types = 1);
 
 namespace Liberty\Convertor;
 
+use Liberty\Convertor\CovertorTrait;
+
 /**
  * Класс DataSize
  * @version 0.0.1
@@ -14,6 +16,8 @@ namespace Liberty\Convertor;
  */
 final class DataSize
 {
+
+    use CovertorTrait;
 
     /**
      * размер данных в байтах
@@ -86,21 +90,6 @@ final class DataSize
         'петабайт' => 'setPByte',
         'petabyte' => 'setPByte',
     ];
-
-    private function parseString($size)
-    {
-        $matches = [];
-        preg_match('~^(?<size>[\d\.,]+)(\s+)?(?<type>\w+)~ui', $size, $matches);
-        if (isset($matches['size']) && isset($matches['type'])) {
-            $setMethod = strtolower($matches['type']);
-            if (isset(self::$convertMethods[$setMethod])) {
-                $method = self::$convertMethods[$setMethod];
-                if (method_exists($this, $method)) {
-                    $this->$method((float)str_replace(',', '.', $matches['size']));
-                }
-            }
-        }
-    }
 
     private function setByte(float $size)
     {
