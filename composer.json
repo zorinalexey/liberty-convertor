@@ -1,0 +1,24 @@
+{
+    "name": "liberty/convertor",
+    "description": "Библиотека классов для конвертации единиц измерения",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Liberty\\Convertor\\": "src/"
+        },
+        "files":[
+            "src/defines.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Алексей Зорин",
+            "email": "zorinalexey59292@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=8.0"
+    }
+}
